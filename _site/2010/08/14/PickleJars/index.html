@@ -46,17 +46,27 @@
             <h2 id='pickle_jar'>Pickle Jar</h2>
 
 <p>Given a list of names, pick one at random Given a list of names, shuffle them into random order</p>
-<div class='highlight'><pre><code class='ruby'><span class='k'>def</span> <span class='nf'>pickle_jar</span><span class='p'>(</span><span class='n'>list_of_names</span><span class='p'>)</span>
-  <span class='n'>init</span><span class='p'>(</span><span class='n'>list</span><span class='p'>)</span>
+
+<p>First Try:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='n'>pickle_jar</span>
+  <span class='kp'>initialize</span><span class='p'>(</span><span class='n'>list</span><span class='p'>)</span>
    <span class='nb'>puts</span> <span class='n'>list</span><span class='o'>.</span><span class='n'>pick_a_random_name</span>
   <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nf'>pick_a_random_name</span>
+    <span class='s2'>&quot;George&quot;</span>
+  <span class='k'>end</span>
 <span class='k'>end</span>
+</code></pre>
+</div>
+<p>Second Try:</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='n'>ruby</span> <span class='o'>-</span><span class='n'>e</span> <span class='s1'>&#39;a=%W(bob joe chr jan frk crl cbw dog jr );\</span>
+<span class='s1'>    puts &quot;The Winner is: #{a[rand(a.size)]}&quot;&#39;</span>
 </code></pre>
 </div>
   </div>
   <div id="footer">
     <hr />
-generated Sat Aug 14 21:21:14 -0700 2010 by <a href="http://wiki.github.com/mojombo/jekyll/"> Jekyll </a>
+generated Sat Aug 14 22:25:42 -0700 2010 by <a href="http://wiki.github.com/mojombo/jekyll/"> Jekyll </a>
 
 
   </div>
