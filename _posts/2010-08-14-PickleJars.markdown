@@ -5,7 +5,6 @@ title: Pickle Jars
 ## Pickle Jar ##
 
 Given a list of names, pick one at random
-Given a list of names, shuffle them into random order
 
 First Try:
 "Object Oriented"
