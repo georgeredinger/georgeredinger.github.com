@@ -27,7 +27,7 @@
     <h3>Posts</h3>
     <ul class="posts">
       {% for post in site.posts %}
-      <li><span></span> &raquo; <a href="{{ post.url }}"> {{ post.title }}</a>  -  <small>{{ post.date | date_to_string }}</small></li>
+      <li><span></span>  <a href="{{ post.url }}"> {{ post.title }}</a>    <small>&raquo; {{ post.date | date_to_string }}</small></li>
       {% endfor %}
     </ul>
   </div>
