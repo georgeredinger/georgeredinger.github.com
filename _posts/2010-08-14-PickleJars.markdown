@@ -8,7 +8,7 @@ Given a list of names, pick one at random
 Given a list of names, shuffle them into random order
 
 First Try:
-
+"Object Oriented"
 {% highlight ruby %}
 class pickle_jar
   initialize(list)
@@ -22,11 +22,20 @@ end
 
 
 Second Try:
-
+A "One Liner"
 {% highlight ruby %}
   ruby -e 'a=%W(bob joe chr jan frk crl cbw dog jr );\
     puts "The Winner is: #{a[rand(a.size)]}"'
 {% endhighlight %}
 
+Third Try:
+From the previous century: CGI
+<script src="http://gist.github.com/525211.js"> </script>
 
+Forth Try:
+Rack, like all the cool kids do things  
+<script src="http://gist.github.com/525241.js?file=pickle_jar_rack.rb"></script>
 
+Fifth Try:
+Javascript (jQuery), the new hotness
+<script src="http://gist.github.com/525227.js"> </script>
