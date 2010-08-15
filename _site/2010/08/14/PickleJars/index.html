@@ -52,7 +52,7 @@
 <p>Given a list of names, pick one name at random.</p>
 
 <p>This problem was suggested by <a href='http://www.cowboyonrails.com/'>CowboyOnRails</a> for use at <a href='http://spokane.rubyusersgroup.org/pickle_jar'>Spokane Ruby Brigade</a>. For choosing who gets swag resulting from the Brigade&#8217;s O&#8217;reilly user group sponsorship.</p>
-
+<hr />
 <h2 id='zeroth_try'>Zeroth Try:</h2>
 
 <p>&#8220;Cowboy&#8217;s solution&#8221;</p>
@@ -120,14 +120,14 @@
 </code></pre>
 </div>
 <p>And it has tests,and a user manual. The rest of Cowboy&#8217;s solution is can be found <a href='http://github.com/cowboyonrails/PickleJar'>here</a></p>
-
+<hr />
 <h2 id='my_first_try'>My First Try:</h2>
 
 <p>A &#8220;One Liner&#8221;</p>
 <div class='highlight'><pre><code class='ruby'>  <span class='n'>ruby</span> <span class='o'>-</span><span class='n'>e</span> <span class='s1'>&#39;a=%W(bob joe chr jan frk crl cbw dog jr );\</span>
 <span class='s1'>    puts &quot;The Winner is: #{a[rand(a.size)]}&quot;&#39;</span>
 </code></pre>
-</div>
+</div><hr />
 <h2 id='my_second_try'>My Second Try:</h2>
 
 <p>&#8220;Object Oriented&#8221;</p>
@@ -140,19 +140,28 @@
   <span class='k'>end</span>
 <span class='k'>end</span>
 </code></pre>
-</div>
+</div><hr />
 <h2 id='my_third_try'>My Third Try:</h2>
 
 <p>From the previous century: CGI</p>
 <script src='http://gist.github.com/525211.js'> </script>
-<p>Forth Try:</p>
+<h2 id='forth_try'>Forth Try:</h2>
 
 <p>Rack, like all the cool kids do things</p>
-<script src='http://gist.github.com/525241.js?file=pickle_jar_rack.rb' />
+<script src='http://gist.github.com/525241.js?file=pickle_jar_rack.rb' /><hr />
 <h2 id='my_fifth_try'>My Fifth Try:</h2>
 
 <p>Javascript (jQuery), the new hotness</p>
-<script src='http://gist.github.com/525227.js'> </script>
+<script src='http://gist.github.com/525227.js'> </script><hr />
+<p>Some of these solutions are deployed on the web:</p>
+
+<ul>
+<li><a href='http://picklejar.georgeredinger.com/'>http://picklejar.georgeredinger.com/</a></li>
+
+<li><a href='http://thewinneris.georgeredinger.com/choose.rb'>http://thewinneris.georgeredinger.com/choose.rb</a></li>
+
+<li><a href='http://picklejar-rack.heroku.com/'>http://picklejar-rack.heroku.com/</a></li>
+</ul>
   </div>
   <div id="disqus_thread"> </div>
 
@@ -177,7 +186,7 @@
 
   <div id="footer">
     <hr />
-generated Sun Aug 15 12:33:48 -0700 2010 by <a href="http://wiki.github.com/mojombo/jekyll/"> Jekyll </a>
+generated Sun Aug 15 12:55:33 -0700 2010 by <a href="http://wiki.github.com/mojombo/jekyll/"> Jekyll </a>
 
 
   </div>

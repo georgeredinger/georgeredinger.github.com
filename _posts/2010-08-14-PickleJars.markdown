@@ -10,6 +10,7 @@ This problem was suggested by [CowboyOnRails](http://www.cowboyonrails.com/) for
 [Spokane Ruby Brigade](http://spokane.rubyusersgroup.org/pickle_jar). For choosing who gets 
 swag resulting from the Brigade's O'reilly user group sponsorship.
 
+----
 ## Zeroth Try: 
 
 "Cowboy's solution"
@@ -80,8 +81,9 @@ end
 
 And it has tests,and a user manual. The rest of Cowboy's solution is can be found [here](http://github.com/cowboyonrails/PickleJar)
 
-## My First Try:
 
+----
+## My First Try:
 A "One Liner"
 
 {% highlight ruby %}
@@ -89,8 +91,9 @@ A "One Liner"
     puts "The Winner is: #{a[rand(a.size)]}"'
 {% endhighlight %}
 
-## My Second Try:
 
+----
+## My Second Try:
 "Object Oriented"
 
 {% highlight ruby %}
@@ -105,22 +108,29 @@ end
 {% endhighlight %}
 
 
-
-
+----
 ## My Third Try:
-
 From the previous century: CGI
 
 <script src="http://gist.github.com/525211.js"> </script>
 
-Forth Try:
 
+## Forth Try:
 Rack, like all the cool kids do things  
 
 <script src="http://gist.github.com/525241.js?file=pickle_jar_rack.rb"></script>
 
-## My Fifth Try:
 
+----
+## My Fifth Try:
 Javascript (jQuery), the new hotness
 
 <script src="http://gist.github.com/525227.js"> </script>
+
+
+----
+Some of these solutions are deployed on the web:
+
+* [http://picklejar.georgeredinger.com/] (http://picklejar.georgeredinger.com/)
+* [http://thewinneris.georgeredinger.com/choose.rb] (http://thewinneris.georgeredinger.com/choose.rb)
+* [http://picklejar-rack.heroku.com/] (http://picklejar-rack.heroku.com/)
