@@ -8,32 +8,25 @@
     <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css"> 
     <title>{{ post.title }}</title>
   </head>
-<html>
-<body>
-<div id="wrap">
+  <body>
+  <div id="wrap">
   <div id="header">
    {% include header.html %}
-   </div>
-    <div id="nav">
-   {% include nav.html %}
+  </div>
+  <div id="nav">
+    {% include nav.html %}
   </div>
 
-<div id="sidebar">
-   {% include sidebar.html %}
-  </div>
-
+  <div id="sidebar"
+    {% include sidebar.html %}
+    </div>
   <div id="main">
-   {{ content }}
-    <h3>Posts</h3>
-    <ul class="posts">
-      {% for post in site.posts %}
-          <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
+        <h1>{{ post.title }}</h1>
+            {{ content }}
   </div>
-    <div id="footer">
-   {% include footer.html %}
+  <div id="footer">
+    {% include footer.html %}
   </div>
-</div>
-</body>
+  </div>
+  </body>
 </html>
