@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="george redinger" />
+    <meta name="description" content="george redinger code" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" type="text/css"> 
+    <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css"> 
+    <title>{{ post.title }}</title>
+  </head>
+<html>
+<body>
+<div id="wrap">
+  <div id="header">
+   {% include header.html %}
+   </div>
+    <div id="nav">
+   {% include nav.html %}
+  </div>
+  <div id="mainwide">
+   {{ content }}
+    <div id="footer">
+   {% include footer.html %}
+  </div>
+</div>
+</body>
+</html>

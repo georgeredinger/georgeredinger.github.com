@@ -95,6 +95,9 @@ html {
 #nav {
   background:Silver;
 }
+#mainwide {
+  background:Silver;
+}
 #main {
   background:Silver;
 }
@@ -143,6 +146,12 @@ h1 {
 }
 #nav {
   padding:5px 10px;
+  background:Silver;
+}
+#mainwide {
+  float:left;
+  width:960px;
+  padding:10px;
   background:Silver;
 }
 #main {

@@ -79,7 +79,7 @@ module PickleJar
 end
 {% endhighlight %}
 
-And it has tests,and a user manual. The rest of Cowboy's solution is can be found [here](http://github.com/cowboyonrails/PickleJar)
+This solution also has tests and a user manual. The rest of Cowboy's solution is can be found [here](http://github.com/cowboyonrails/PickleJar)
 
 
 ----
@@ -134,3 +134,5 @@ Some of these solutions are deployed on the web:
 * [http://picklejar.georgeredinger.com/] (http://picklejar.georgeredinger.com/)
 * [http://thewinneris.georgeredinger.com/choose.rb] (http://thewinneris.georgeredinger.com/choose.rb)
 * [http://picklejar-rack.heroku.com/] (http://picklejar-rack.heroku.com/)
+
+
