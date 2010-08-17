@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="george redinger" />
+    <meta name="description" content="george redinger code" />
+    <link rel="stylesheet" href="/stylesheets/styles.css" type="text/css"> 
+    <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css"> 
+    <title></title>
+  </head>
+  <body>
+
+  <script src="http://www.google.com/jsapi?key=ABQIAAAAP_8YDI9gsJp2Kb1LN84m6RRhG9pSH20TEz9wwPtMOR-PPl8h0RSc49wL0W0HC4Uxmli1wOFXeVivkQ" type="text/javascript"></script>
+
+<script language="Javascript" type="text/javascript">
+//<![CDATA[
+
+google.load("search", "1");
+
+function OnLoad() {
+  // Create a search control
+  var searchControl = new google.search.SearchControl();
+
+  // Add in a WebSearch
+  var webSearch = new google.search.WebSearch();
+
+  // Restrict our search to pages from this site
+  webSearch.setSiteRestriction('georgeredinger.github.com.com');
+
+  // Add the searcher to the SearchControl
+  searchControl.addSearcher(webSearch);
+
+  // tell the searcher to draw itself and tell it where to attach
+  searchControl.draw(document.getElementById("search"));
+}
+google.setOnLoadCallback(OnLoad);
+
+//]]>
+</script>
+ 
+  <div ID="header">
+   <h1><a href="/"> George Redinger</a> </h1>
+
+  </div>
+<div id="wrap">
+    <div id = "sidebar">
+   <ul>
+ <li><a href="/about">About me</a></li>                                                           
+ <li><a href="http://github.com/georgeredinger">GitHub</a></li>
+ <li><a href="http://twitter.com/gredinger">Twitter</a></li>
+</ul>
+<hr/>
+ <h3>Search This Site</h3>
+ <div id="search"></div>
+
+ <div id="github-badge">
+     <script type="text/javascript" charset="utf-8">
+       GITHUB_USERNAME = "georgeredinger";
+       GITHUB_LIST_LENGTH = 10;
+       GITHUB_HEAD = "div"; // e.g. change to "h2" for wordpress sidebars
+       GITHUB_THEME = "white"; // try 'black'
+       GITHUB_TITLE = "Georges code"
+       GITHUB_SHOW_ALL = "Show all"
+     </script>
+     <script src="http://drnicjavascript.rubyforge.org/github_badge/dist/github-badge-launcher.js" type="text/javascript"></script>
+  </div >
+
+  </div>
+  <div id="main">
+        <h1></h1>
+            <h2 id='visualize_propane_price_history'>Visualize Propane price history</h2>
+
+<p>Consumer propane prices are highly variable. Like most consumers I prefer to buy when prices are low. But how to know when prices are at their lowest? This application looks at price history from my local propane supplier <a href='http://www.co-openergy.org/prices.html'>&#8220;co-op energy&#8221;</a> to help.</p>
+
+<p>I used</p>
+
+<ul>
+<li>Nokogiri</li>
+
+<li>Sinatra</li>
+
+<li>Datamapper</li>
+
+<li>Flot</li>
+
+<li>jQuery</li>
+
+<li>Haml/Sass</li>
+
+<li>And Heroku</li>
+</ul>
+
+<p>to build it.</p>
+
+<p>That&#8217;s a big pile of software to build a &#8220;simple&#8221; Sinatra app. I wanted to compare the &#8220;ease&#8221; of building small apps with Sinatra vs Rails. My conculsion: In this case Sinatra is easier on the computer. But, once you get Haml/Sass, Datamapper, Migrations, Views and models in their own directories, etc, It&#8217;s not much easier for me. An instance of the app is deployed here:</p>
+
+<p><a href='http://cooppropane-rack.heroku.com/'>http://cooppropane.heroku.com/</a></p>
+
+<p>The source is on <a href='http://github.com/georgeredinger/cooppropane'>GitHub</a></p>
+  <div id="disqus_thread"> </div>
+  </div>
+
+    <script type="text/javascript">
+      var disqus_identifier= "/2010/08/17/CoopPropane/" ;
+       (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+           dsq.src = 'http://georgescode.disqus.com/embed.js';
+           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/%3Fref_noscript%3Dgeorgescode">comments powered by Disqus.</a></noscript>
+
+        <script type="text/javascript">
+          var disqus_shortname = 'georgescode';
+          (function () {
+              var s = document.createElement('script'); s.async = true;
+                s.src = 'http://disqus.com/forums/georgescode/count.js';
+                  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+                }());
+              </script>
+
+   </div>
+  <div id="footer">
+    This site powered by Electricity
+
+
+  </div>
+ </body>
+</html>
