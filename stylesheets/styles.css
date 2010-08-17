@@ -1,8 +1,11 @@
 body{
     font-family: Arial, "MS Trebuchet", sans-serif;
-      font-size: 18px;
-        background-color: #eeeeee;
+        font-size: 62.5%;
+        line-height: 1.5;
+        margin:0;
+        padding:0;
       }
+
 #github-badge {
     width: 250px;
     background-color:white;
@@ -13,12 +16,39 @@ body{
     padding-right:0.2em;
     padding-top:0.2em;
 }
+#posts ul {
+  margin:0;
+  padding:0;
+}
+#posts ul li{
+  color:Silver;
+  padding: 0.1;
+}
+
+#posts ul li a {
+  text-decoration: none;
+  padding: 0.3em;
+}
+
 
 #posts h1{
-  font-size: 30px;
+  font-size: 1em;
   text-align: center;
   margin: 10px 0 5px 0;
 }
+#posts ul {
+  list-style-type: none;
+}
+a {
+  font-size: 1em;
+  text-decoration: none;
+  padding: 0.3em;
+  color:silver;
+}
+
+a:hover {color:#cc0000;}
+
+
 
 h1{
   text-align: center;
@@ -31,20 +61,6 @@ h2{
   color: #999;
 }
 
-a{
-  font-weight: bold;
-  color: #000;
-}
-
-h2 a{
-  color: #999;
-}
-
-img.avatar{
-  float: left;
-  margin: 0 10px 5px 0;
-  border: 1px solid #333;
-}
 
 p{
   margin: 0 0 10px 0;
@@ -69,115 +85,89 @@ img.centered{
   margin-bottom: 100px;
 }
 
-#sidebar {
-    float: right;
-    font-size: 0.9em;
-    margin-top: 1em;
-    width: 14em;
-}
 
 body,
 html {
   margin:0;
   padding:0;
-  color:#000;
-  background:Silver;
+  color:#555;
 }
 
 #wrap {
   width:960px;
   margin:0 auto;
-  background:Silver;
-}
-#header {
-  background:Silver;
-}
-#nav {
-  background:Silver;
-}
-#mainwide {
-  background:Silver;
-}
-#main {
-  background:Silver;
-}
-#sidebar {
-  background:Silver;
-}
-#footer {
-  background:Silver;
 }
 
-//#main {
-//  float:left;
-//  width:700px;
-//  background:#9c9;
-//}
 #sidebar {
   float:right;
+  font-size: 1em;
+  margin: 1em 0;
+  padding:10px;
   width:250px;
-  background:Silver;
 }
+#search {
+  width:230px;
+}
+.gsc-control {
+  width:250px
+}
+#sidebar ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+#sidebar ul li{
+  color:Silver;
+  padding: 0.1;
+}
+
+#sidebar ul li a {
+  padding: 0.3em;
+  font-size: 1em;
+}
+
+#sidebar ul li  a:hover {color:#cc0000;}
+
+#sidebar hr { margin: 1em 0;}
+
 #footer {
   clear:both;
-  background:Silver;
 }
-#sidebar {
-  float:right;
-  width:250px;
-  background:Silver;
+
+#header {                                                                                               
+  width: 930px;
+  float:left;
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-bottom: 0em;
+  padding-left: 1em;
+  border-bottom: 1px solid #777;
 }
-#nav ul {
-  margin:0;
-  padding:0;
-  list-style:none;
+
+#header h1{
+  float:left;
+   font-family: ‘Lucida Console’, Monaco, monospace;
+   font-size: 4em;
 }
-#nav li {
-  display:inline;
-  margin:0;
-  padding:0;
+#header h1 a {
+  text-decoration: none;
+  height: 1em;
+  color:silver;
+  float:left;
 }
-#header {
-  padding:5px 10px;
-  background:Silver;
-}
+#header h1 a:hover {color:#cc0000;}
+
 h1 {
   margin:0;
-}
-#nav {
-  padding:5px 10px;
-  background:Silver;
-}
-#mainwide {
-  float:left;
-  width:960px;
-  padding:10px;
-  background:Silver;
 }
 #main {
   float:left;
   width:640px;
   padding:10px;
-  background:Silver;
 }
-h2 {
-  margin:0 0 1em;
-}
-#sidebar {
-  float:right;
-  width:250px;
-  padding:10px;
-  background:Silver;
-}
+
 #footer {
+  border-top: 1px solid #777;
   clear:both;
   padding:5px 10px;
-  background:Silver;
 }
-#footer p {
-  margin:0;
-}
-* html #footer {
-  * height:1px;
-  * }
-  *

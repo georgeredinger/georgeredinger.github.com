@@ -8,32 +8,24 @@
     <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css"> 
     <title>{{ post.title }}</title>
   </head>
-<html>
+  {% include google_ajax_search.html %} 
 <body>
-<div id="wrap">
   <div id="header">
    {% include header.html %}
    </div>
-    <div id="nav">
-   {% include nav.html %}
-  </div>
-
-<div id="sidebar">
+ <div id="wrap">
+  <div id="sidebar">
    {% include sidebar.html %}
   </div>
-
   <div id="main">
    {{ content }}
-    <h3>Posts</h3>
-    <ul class="posts">
-      {% for post in site.posts %}
-      <li><span></span>  <a href="{{ post.url }}"> {{ post.title }}</a>    <small>&raquo; {{ post.date | date_to_string }}</small></li>
-      {% endfor %}
-    </ul>
   </div>
-    <div id="footer">
+ 
+</div>
+  <div id="footer">
    {% include footer.html %}
   </div>
-</div>
+ {% include google_analytics.html %}
 </body>
 </html>
+

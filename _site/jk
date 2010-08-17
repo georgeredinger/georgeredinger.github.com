@@ -1,0 +1,2 @@
+#!/bin/bash
+jekyll --pygments && jekyll --server

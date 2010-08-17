@@ -9,19 +9,20 @@
     <title>{{ post.title }}</title>
   </head>
   <body>
-  <div id="wrap">
-  <div id="header">
+
+  {% include google_ajax_search.html %} 
+  <div ID="header">
    {% include header.html %}
   </div>
-  <div id="nav">
-    {% include nav.html %}
+<div id="wrap">
+    <div id = "sidebar">
+   {% include sidebar.html %}
   </div>
-
-  <div id="mainwide">
+  <div id="main">
         <h1>{{ post.title }}</h1>
             {{ content }}
-  </div>
   <div id="disqus_thread"> </div>
+  </div>
 
     <script type="text/javascript">
       var disqus_identifier= "{{ page.url }}" ;
@@ -42,9 +43,9 @@
                 }());
               </script>
 
+   </div>
   <div id="footer">
     {% include footer.html %}
   </div>
-  </div>
-  </body>
+ </body>
 </html>
