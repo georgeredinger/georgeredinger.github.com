@@ -9,22 +9,26 @@ body{
 #github-badge {
     width: 250px;
     background-color:white;
-    color:black;
-    font:normal normal normal 12px/normal 'Lucida Grande', 'Trebuchet MS', Verdana, sans-serif;
+    color: Silver;
+    font: 'Lucida Grande', 'Trebuchet MS', Verdana, sans-serif;
     padding-bottom:0.2em;
     padding-left:0.2em;
     padding-right:0.2em;
     padding-top:0.2em;
 }
+
 #posts ul {
+  font-size: 2em;
   margin:0;
   padding:0;
 }
 #posts ul li{
   color:Silver;
-  padding: 0.1;
+  padding: 0.1em;
 }
-
+#posts ul {
+  list-style-type: none;
+}
 #posts ul li a {
   text-decoration: none;
   padding: 0.3em;
@@ -32,17 +36,15 @@ body{
 
 
 #posts h1{
-  font-size: 1em;
+  font-size: 2em;
   text-align: center;
   margin: 10px 0 5px 0;
 }
-#posts ul {
-  list-style-type: none;
-}
+
 a {
-  font-size: 1em;
-  text-decoration: none;
-  padding: 0.3em;
+//  font-size: 2em;
+//  text-decoration: none;
+//  padding: 0.3em;
   color:silver;
 }
 
@@ -66,12 +68,12 @@ p{
   margin: 0 0 10px 0;
 }
 
-.name {
-  color: #fd771c;
-  text-shadow: #ffffff 0 1px 0;
-}
+//.name {
+//  color: #fd771c;
+//  text-shadow: #ffffff 0 1px 0;
+//}
 #content{
-  float:left
+  float:left;
   width: 34em;
 }
 
@@ -100,7 +102,6 @@ html {
 
 #sidebar {
   float:right;
-  font-size: 1em;
   margin: 1em 0;
   padding:10px;
   width:250px;
@@ -112,18 +113,19 @@ html {
   width:250px
 }
 #sidebar ul {
+  font-size: 2em;
   list-style-type:none;
   margin:0;
   padding:0;
 }
 #sidebar ul li{
   color:Silver;
-  padding: 0.1;
+  padding: 0.1em;
 }
 
 #sidebar ul li a {
+  
   padding: 0.3em;
-  font-size: 1em;
 }
 
 #sidebar ul li  a:hover {color:#cc0000;}
