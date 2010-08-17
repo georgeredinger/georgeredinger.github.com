@@ -27,7 +27,7 @@ My conculsion: In this case Sinatra is easier on the computer. But, once you get
 Views and models in their own directories, etc, It's not much easier for me.
 An instance of the  app is deployed here:
 
-[http://cooppropane.heroku.com/] (http://cooppropane-rack.heroku.com/)
+[http://cooppropane.heroku.com/] (http://cooppropane.heroku.com/)
 
 The source is on [GitHub] (http://github.com/georgeredinger/cooppropane)
 
