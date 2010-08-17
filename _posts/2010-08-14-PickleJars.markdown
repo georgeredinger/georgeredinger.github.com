@@ -13,7 +13,7 @@ swag resulting from the Brigade's O'reilly user group sponsorship.
 ----
 ## Zeroth Try: 
 
-"Cowboy's solution"
+"The Cowboy's solution"
 
 {% highlight ruby %}
 module PickleJar
@@ -86,6 +86,8 @@ This solution also has tests and a user manual. The rest of Cowboy's solution is
 ## My First Try:
 A "One Liner"
 
+This solution more closely matches the conventional meaning of "Cowboy code".
+
 {% highlight ruby %}
   ruby -e 'a=%W(bob joe chr jan frk crl cbw dog jr );\
     puts "The Winner is: #{a[rand(a.size)]}"'
@@ -95,6 +97,8 @@ A "One Liner"
 ----
 ## My Second Try:
 "Object Oriented"
+
+This one uses some of the techniques used in other automated voting systems.
 
 {% highlight ruby %}
 class pickle_jar
@@ -111,6 +115,7 @@ end
 ----
 ## My Third Try:
 From the previous century: CGI
+
 
 <script src="http://gist.github.com/525211.js"> </script>
 
