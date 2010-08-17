@@ -23,18 +23,12 @@ a:visited {color:Red;}
 text-decoration: none;
   list-style-type: none;
   font-size: 2em;
-  //margin:0;
-  //padding:0;
 }
 #posts ul li{ color:Silver; }
 #posts ul { list-style-type: none; }
 #posts ul li a { text-decoration: none; list-style-type: none; }
-
-//#posts h1{ font-size: 2em; }
 a:hover {color:#cc0000;}
-//h1{ text-align: center; margin: 10px 0 5px 0; }
-//h2{ margin: 0 0 10px 0; text-align: left; font-size:16px; color: #999; }
-p{ margin: 0 0 10px 0; }
+//p{ margin: 0 0 10px 0; }
 #content{ float:left; width: 34em; }
 #footer{ margin-bottom: 100px; }
 
@@ -92,14 +86,17 @@ html {
   float:left;
 }
 #header h1 a:hover {color:#cc0000;}
-
-h1 {
-  margin:0;
-}
-
+h1 { margin:0; }
+h3 {color: Silver}
 #footer { clear:both; }
 #footer {
   border-top: 1px solid #777;
   clear:both;
   padding:5px 10px;
 }
+#posts p{
+  width: 424px;
+  padding: 10px 0 20px;
+  margin: -10px 20px 0 30px;
+}
+

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Pickle Jars 
+excerpt: Pick a random winner from a list of names...
 ---
 ## Pickle Jar ##
 
