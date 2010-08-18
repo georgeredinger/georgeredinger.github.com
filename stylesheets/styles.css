@@ -9,11 +9,22 @@
     padding-right:0.2em;
     padding-top:0.2em;
 }
-#search { width:230px; }
-.gsc-control { width:230px }
+#search { width:250px; }
+#sidebar .gsc-control { width: 236px; } 
+//.gsc-control { width:230px }
 ul { list-style-type:none}
 ul li a { text-decoration: none;}
 a:visited {color:Red;}
+hr {
+  background: #DDD;
+  border: none;
+  clear: both;
+  color: #DDD;
+  float: none;
+  height: 0.1em;
+  margin: 0px 0px 1.45em;
+  width: 100%;
+}
 #main {
   float:left;
   width:640px;
@@ -45,7 +56,8 @@ html {
   float:right;
   margin: 1em 0;
   padding:10px;
-  width:250px;
+  width:230px;
+  text-align: left;
 }
 #sidebar ul {
   font-size: 1em;
@@ -64,7 +76,13 @@ html {
   color :Silver;
 }
 #sidebar ul li  a:hover {color:#cc0000;}
-#sidebar hr { margin: 1em 0;}
+#sidebar hr {
+  margin: 1em 0px;
+  margin-top: 1em;
+  margin-right: 0px;
+  margin-bottom: 1em;
+  margin-left: 0px;
+}
 #header {                                                                                               
   width: 930px;
   float:left;

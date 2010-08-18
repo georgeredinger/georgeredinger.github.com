@@ -22,7 +22,7 @@ function OnLoad() {
   var webSearch = new google.search.WebSearch();
 
   // Restrict our search to pages from this site
-  webSearch.setSiteRestriction('georgeredinger.github.com.com');
+  webSearch.setSiteRestriction('georgeredinger.github.com');
 
   // Add the searcher to the SearchControl
   searchControl.addSearcher(webSearch);
@@ -51,7 +51,7 @@ google.setOnLoadCallback(OnLoad);
 <hr/>
  <h3>Search This Site</h3>
  <div id="search"></div>
-
+ <hr/>
  <div id="github-badge">
      <script type="text/javascript" charset="utf-8">
        GITHUB_USERNAME = "georgeredinger";
@@ -86,7 +86,6 @@ google.setOnLoadCallback(OnLoad);
 </ul>
 
   </div>
- 
 </div>
   <div id="footer">
    This site powered by Electricity
