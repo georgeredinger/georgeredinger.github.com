@@ -94,13 +94,15 @@ html {
 }
 #header h1{
   float:left;
-   font-family: ‘Lucida Console’, Monaco, monospace;
+  // font-family: 'Tangerine', serif;font-size: 48px;text-shadow: 4px 4px 4px #aaa;
+   font-family: 'IM Fell DW Pica', serif;
+  // font-family: ‘Lucida Console’, Monaco, monospace;
    font-size: 4em;
 }
 #header h1 a {
   text-decoration: none;
   height: 1em;
-  color:silver;
+  color:black;
   float:left;
 }
 #header h1 a:hover {color:#cc0000;}
