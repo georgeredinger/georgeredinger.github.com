@@ -11,13 +11,14 @@ But how to know when prices are at their lowest?   This application looks at pri
 propane supplier ["co-op energy"](http://www.co-openergy.org/prices.html)  to help.
 
 I used
-* Nokogiri
-* Sinatra
-* Datamapper
-* Flot
-* jQuery
-* Haml/Sass
-* And Heroku
+
+- Nokogiri
+- Sinatra
+- Datamapper
+- Flot
+- jQuery
+- Haml/Sass
+- And Heroku
 
 to build it.
 
@@ -27,8 +28,8 @@ My conculsion: In this case Sinatra is easier on the computer. But, once you get
 Views and models in their own directories, etc, It's not much easier for me.
 An instance of the  app is deployed here:
 
-[http://cooppropane.heroku.com/] (http://cooppropane.heroku.com/)
+[http://cooppropane.heroku.com/](http://cooppropane.heroku.com/)
 
-The source is on [GitHub] (http://github.com/georgeredinger/cooppropane)
+The source is on [GitHub](http://github.com/georgeredinger/cooppropane)
 
 

@@ -4,7 +4,7 @@
  <title></title>
  <link href="http://georgeredinger.github.com/atom.xml" rel="self"/>
  <link href="http://georgeredinger.github.com"/>
- <updated>2010-10-04T11:04:24-07:00</updated>
+ <updated>2010-10-04T11:29:33-07:00</updated>
  <id>http://georgeredinger.github.com</id>
 
  
@@ -238,9 +238,9 @@ some serious web development mindset and framework rehab may be required.&lt;/p&
 
 &lt;p&gt;It&amp;rsquo;s early days for Rails 3. But not too early to build and deploy an application with out too much fuss.
 At least after you learn the tricks.
-I wrote this application to compare with the similar Sinatra app [&amp;ldquo;Co-op Propane&amp;rdquo;] (/2010/08/17/CoopPropane/)&lt;/p&gt;
+I wrote this application to compare with the similar Sinatra app &lt;a href=&quot;/2010/08/17/CoopPropane/&quot;&gt;&amp;ldquo;Co-op Propane&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;[http://logprices.heroku.com/] (http://logprices.heroku.com/)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://logprices.heroku.com/&quot;&gt;http://logprices.heroku.com/&lt;/a&gt;&lt;/p&gt;
 </content>
 
 
@@ -258,14 +258,18 @@ I wrote this application to compare with the similar Sinatra app [&amp;ldquo;Co-
 But how to know when prices are at their lowest?   This application looks at price history from my local
 propane supplier &lt;a href=&quot;http://www.co-openergy.org/prices.html&quot;&gt;&amp;ldquo;co-op energy&amp;rdquo;&lt;/a&gt;  to help.&lt;/p&gt;
 
-&lt;p&gt;I used
-* Nokogiri
-* Sinatra
-* Datamapper
-* Flot
-* jQuery
-* Haml/Sass
-* And Heroku&lt;/p&gt;
+&lt;p&gt;I used&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nokogiri&lt;/li&gt;
+&lt;li&gt;Sinatra&lt;/li&gt;
+&lt;li&gt;Datamapper&lt;/li&gt;
+&lt;li&gt;Flot&lt;/li&gt;
+&lt;li&gt;jQuery&lt;/li&gt;
+&lt;li&gt;Haml/Sass&lt;/li&gt;
+&lt;li&gt;And Heroku&lt;/li&gt;
+&lt;/ul&gt;
+
 
 &lt;p&gt;to build it.&lt;/p&gt;
 
@@ -275,9 +279,9 @@ My conculsion: In this case Sinatra is easier on the computer. But, once you get
 Views and models in their own directories, etc, It&amp;rsquo;s not much easier for me.
 An instance of the  app is deployed here:&lt;/p&gt;
 
-&lt;p&gt;[http://cooppropane.heroku.com/] (http://cooppropane.heroku.com/)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://cooppropane.heroku.com/&quot;&gt;http://cooppropane.heroku.com/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The source is on [GitHub] (http://github.com/georgeredinger/cooppropane)&lt;/p&gt;
+&lt;p&gt;The source is on &lt;a href=&quot;http://github.com/georgeredinger/cooppropane&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
 </content>
 
 

@@ -12,8 +12,8 @@
 #search { width:250px; }
 #sidebar .gsc-control { width: 236px; } 
 //.gsc-control { width:230px }
-ul { list-style-type:none}
-ul li a { text-decoration: none;}
+//ul { list-style-type:none}
+//ul li a { text-decoration: none;}
 a:visited {color:Red;}
 hr {
   background: #DDD;
@@ -30,14 +30,14 @@ hr {
   width:640px;
   padding:10px;
 }
-#posts ul {
-text-decoration: none;
-  list-style-type: none;
-  font-size: 2em;
-}
-#posts ul li{ color:Silver; }
-#posts ul { list-style-type: none; }
-#posts ul li a { text-decoration: none; list-style-type: none; }
+//#posts ul {
+//text-decoration: none;
+//  list-style-type: none;
+//  font-size: 2em;
+//}
+//#posts ul li{ color:Silver; }
+//#posts ul { list-style-type: none; }
+//#posts ul li a { text-decoration: none; list-style-type: none; }
 a:hover {color:#cc0000;}
 //p{ margin: 0 0 10px 0; }
 #content{ float:left; width: 34em; }
