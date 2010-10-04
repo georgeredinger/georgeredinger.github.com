@@ -1,0 +1,103 @@
+## Finding the Mavens in a social network  ##
+
+----
+
+
+
+some kind of tests:
+'smarty pants'
+elipsis ...
+em-dash --
+
+
+
+All social networks have [Mavins](http://en.wikipedia.org/wiki/Maven), those people that are much more infuential
+than the average. The key to success in  multilevel marketing  is getting others to do the sales for you. 
+In multilevel marketing schemes, sales commissions are assigned according to your position (seat) in a 
+pyramid. 
+
+My solution only goes as far as counting direct connections between parent and child  sales people.
+
+some kind of tests:
+
+'smarty pants'
+
+elipsis ...
+
+em-dash --
+
+
+
+
+
+### The problem ###
+
+
+<div class="highlight"><pre><code class="ruby"><span class="c1">#!/usr/bin/env ruby</span>
+<span class="nb">require</span> <span class="s1">&#39;rubygems&#39;</span>
+<span class="c1">#for a disscussion of the dynamics of multi level marketing see:</span>
+<span class="c1">#https://docs.google.com/viewer?url=http://www.systemdynamics.org/conferences/2008/proceed/papers/OLAYA411.pdf</span>
+
+<span class="c1">#from http://my.rails-royce.org/2009/10/02/ordered-hash-by-keys/</span>
+<span class="nb">require</span> <span class="s1">&#39;active_support/ordered_hash&#39;</span>
+<span class="k">class</span> <span class="nc">SimpleOrderedHash</span> <span class="o">&lt;</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">OrderedHash</span>
+   <span class="c1"># Lets reimplement sort method</span>
+  <span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="nb">self</span><span class="o">.</span><span class="n">dup</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">sort!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="n">h</span>
+  <span class="k">end</span>
+ 
+  <span class="c1"># Lets implement sort! method</span>
+  <span class="c1"># It uses @keys variable to do the sorting</span>
+  <span class="k">def</span> <span class="nf">sort!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="vi">@keys</span><span class="o">.</span><span class="n">sort!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+    <span class="n">sync_keys!</span>
+    <span class="nb">self</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1">#create a random network of people who have talked others into selling for them</span>
+<span class="c1">#each of 10,000 seats gets a random boss (parent)</span>
+<span class="c1">#I expect a real marketing network  to be less uniform than this. </span>
+<span class="c1">#</span>
+<span class="n">seat</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">.</span><span class="n">new</span>
+<span class="mi">10000</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">seat</span><span class="o">[</span><span class="n">i</span><span class="o">]=</span><span class="nb">rand</span><span class="p">(</span><span class="mi">9999</span><span class="p">)</span> <span class="p">}</span>
+ 
+<span class="c1">#count the number of times each seat is the boss of another one</span>
+<span class="n">weighted_seat</span> <span class="o">=</span> <span class="no">SimpleOrderedHash</span><span class="o">.</span><span class="n">new</span>
+<span class="n">seat</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">weighted_seat</span><span class="o">[</span><span class="n">v</span><span class="o">]||=</span><span class="mi">0</span><span class="p">;</span><span class="n">weighted_seat</span><span class="o">[</span><span class="n">v</span><span class="o">]</span> <span class="o">+=</span><span class="mi">1</span><span class="p">}</span>
+
+<span class="c1"># order the seats by the number of childern each has</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">weighted_seat</span><span class="o">.</span><span class="n">sort</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">|</span>
+  <span class="n">weighted_seat</span><span class="o">[</span><span class="n">b</span><span class="o">]</span> <span class="o">&lt;=&gt;</span> <span class="n">weighted_seat</span><span class="o">[</span><span class="n">a</span><span class="o">]</span>
+<span class="k">end</span>
+
+<span class="c1">#show only the top 10, who cares about the loosers.. </span>
+<span class="n">top_ten</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="s2">&quot;The Winners are:&quot;</span>
+<span class="n">top_ten</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">k</span><span class="si">}</span><span class="s2">:</span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">}</span>
+ 
+</code></pre>
+</div>
+
+
+<div class="highlight"><pre><code class="bash"> <span class="nv">$ </span><span class="nb">time</span> ./mlm.rb
+ The Winners are:
+ 670:7
+ 5058:6
+ 2664:6
+ 729:6
+ 2436:6
+ 9633:6
+ 9010:6
+ 6792:6
+ 2641:6
+ 6743:5
+
+ real 0m0.136s
+ user 0m0.120s
+ sys  0m0.012s
+</code></pre>
+</div>
+

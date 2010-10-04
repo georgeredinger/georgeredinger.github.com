@@ -1,0 +1,154 @@
+<h2 id='discovering_hosts_on_my_local_network'>Discovering Hosts on my local network</h2>
+<hr />
+<p>From time to time my Wife calls up to my programing lair with something like &#8220;My computer won&#8217;t &#8230;&#8221; So, I ssh into her laptop, fix the problem or shout the answer back. Trouble is, I don&#8217;t know the IP address of her computer, since it uses DHCP for address configuration. My usual solution to this is this Bash script:</p>
+
+<h3 id='the_old_way'>The Old Way</h3>
+<div class='highlight'><pre><code class='bash'><span class='c'>#!/bin/bash</span>
+cat /home/george/bin/localIPAddresses.txt | fping 2&gt;/dev/null | grep <span class='s2'>&quot;is alive&quot;</span>
+</code></pre>
+</div><pre>
+192.168.0.1 is alive
+192.168.0.2 is alive
+192.168.0.4 is alive
+192.168.0.16 is alive
+192.168.0.17 is alive
+192.168.0.20 is alive
+192.168.0.99 is alive
+192.168.0.111 is alive
+</pre>
+<p>The heart of this script is <strong>fping</strong>. <strong>fping</strong> blasts out pings in parallel to the network and then collects the replies as they come in. So, it takes only a few seconds to check the 253 addresses on my local network.</p>
+
+<p>I still don&#8217;t know which address is her laptop though. So I just guess and try to log into the likely candidates. Since my Wifes&#8217; laptop stays at home, a better solution would be to just configure it to use a static IP. But, that&#8217;s just a little too easy.</p>
+<hr />
+<h3 id='another_idea'>Another Idea</h3>
+
+<p>I got the idea that I could create a standard user on each host on my network that I might want to ssh into and then write a script to try to log into each. Once logged in, I could get the <strong>hostname</strong> and then I&#8217;d know the hosts by name. I figured that I could speed the discovery process up by only trying to login to those addresses that respond to a ping.</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
+<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;net/ssh&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;ping&#39;</span>
+
+<span class='no'>USER</span> <span class='o'>=</span> <span class='s1'>&#39;monitor&#39;</span>
+<span class='no'>PASS</span> <span class='o'>=</span> <span class='s1'>&#39;rotinom&#39;</span>
+<span class='n'>alive</span> <span class='o'>=</span> <span class='o'>[]</span> 
+<span class='k'>def</span> <span class='nf'>check</span><span class='p'>(</span><span class='n'>host</span><span class='p'>)</span>
+      <span class='k'>begin</span>
+        <span class='no'>Net</span><span class='o'>::</span><span class='no'>SSH</span><span class='o'>.</span><span class='n'>start</span><span class='p'>(</span><span class='n'>host</span><span class='p'>,</span> <span class='no'>USER</span><span class='p'>,</span> <span class='ss'>:password</span><span class='o'>=&gt;</span><span class='no'>PASS</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>session</span><span class='o'>|</span>
+            <span class='n'>host_cmd</span> <span class='o'>=</span> <span class='s1'>&#39;hostname&#39;</span>
+            <span class='n'>ip_cmd</span> <span class='o'>=</span><span class='s1'>&#39;ifconfig&#39;</span>
+            <span class='n'>host_result</span> <span class='o'>=</span> <span class='n'>session</span><span class='o'>.</span><span class='n'>exec!</span><span class='p'>(</span><span class='n'>host_cmd</span><span class='p'>)</span>
+            <span class='n'>ip_result_raw</span> <span class='o'>=</span> <span class='n'>session</span><span class='o'>.</span><span class='n'>exec!</span><span class='p'>(</span><span class='n'>ip_cmd</span><span class='p'>)</span>
+            <span class='n'>ip_result</span> <span class='o'>=</span> <span class='n'>ip_result_raw</span><span class='o'>[/</span><span class='n'>inet</span> <span class='n'>addr</span><span class='p'>:</span><span class='mi'>192</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>168</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>0</span><span class='p'>\</span><span class='o'>.</span><span class='n'>[</span><span class='mi'>1</span><span class='o'>-</span><span class='mi'>9</span><span class='o'>]*/]</span>
+            <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>ip_result</span><span class='o'>[/</span><span class='mi'>192</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>168</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>0</span><span class='p'>\</span><span class='o'>.</span><span class='n'>[</span><span class='mi'>1</span><span class='o'>-</span><span class='mi'>9</span><span class='o'>]*/]</span><span class='si'>}</span><span class='s2'> </span><span class='si'>#{</span><span class='n'>host_result</span><span class='si'>}</span><span class='s2'>&quot;</span>
+        <span class='k'>end</span>
+      <span class='k'>rescue</span>
+        <span class='k'>return</span>
+      <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>254</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>ip</span><span class='o'>|</span>
+    <span class='n'>host</span> <span class='o'>=</span> <span class='s2'>&quot;192.168.0.</span><span class='si'>#{</span><span class='n'>ip</span><span class='si'>}</span><span class='s2'>&quot;</span>
+      <span class='k'>if</span>  <span class='no'>Ping</span><span class='o'>.</span><span class='n'>pingecho</span><span class='p'>(</span><span class='n'>host</span><span class='p'>)</span>
+        <span class='n'>alive</span><span class='o'>&lt;&lt;</span> <span class='n'>host</span>
+      <span class='k'>end</span>
+    <span class='k'>end</span>
+
+<span class='n'>alive</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>host</span><span class='o'>|</span>
+  <span class='n'>check</span><span class='p'>(</span><span class='n'>host</span><span class='p'>)</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>Here&#8217;s the output:</p>
+<div class='highlight'><pre><code class='bash'><span class='nv'>$ </span><span class='nb'>time</span> ./monitor-sequential.rb 
+192.168.0.4 george-laptop
+192.168.0.16 Dell
+192.168.0.17 hp-pavilion
+192.168.0.111 geolap
+
+real  3m53.408s
+user  0m0.280s
+sys 0m0.060s
+</code></pre>
+</div>
+<p>This works, but takes 3 minutes 53 seconds to run. So, why not let each ping have it&#8217;s own thread?</p>
+<hr />
+<h3 id='threaded_pings'>Threaded Pings</h3>
+<div class='highlight'><pre><code class='ruby'><span class='c1'>#!/usr/bin/env ruby</span>
+<span class='nb'>require</span> <span class='s1'>&#39;rubygems&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;net/ssh&#39;</span>
+<span class='nb'>require</span> <span class='s1'>&#39;ping&#39;</span>
+
+<span class='no'>USER</span> <span class='o'>=</span> <span class='s1'>&#39;monitor&#39;</span>
+<span class='no'>PASS</span> <span class='o'>=</span> <span class='s1'>&#39;rotinom&#39;</span>
+<span class='n'>alive</span> <span class='o'>=</span> <span class='o'>[]</span> 
+
+<span class='k'>def</span> <span class='nf'>check</span><span class='p'>(</span><span class='n'>host</span><span class='p'>)</span>
+      <span class='k'>begin</span>
+        <span class='no'>Net</span><span class='o'>::</span><span class='no'>SSH</span><span class='o'>.</span><span class='n'>start</span><span class='p'>(</span><span class='n'>host</span><span class='p'>,</span> <span class='no'>USER</span><span class='p'>,</span> <span class='ss'>:password</span><span class='o'>=&gt;</span><span class='no'>PASS</span><span class='p'>)</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>session</span><span class='o'>|</span>
+            <span class='n'>host_cmd</span> <span class='o'>=</span> <span class='s1'>&#39;hostname&#39;</span>
+            <span class='n'>ip_cmd</span> <span class='o'>=</span><span class='s1'>&#39;ifconfig&#39;</span>
+            <span class='n'>host_result</span> <span class='o'>=</span> <span class='n'>session</span><span class='o'>.</span><span class='n'>exec!</span><span class='p'>(</span><span class='n'>host_cmd</span><span class='p'>)</span>
+            <span class='n'>ip_result_raw</span> <span class='o'>=</span> <span class='n'>session</span><span class='o'>.</span><span class='n'>exec!</span><span class='p'>(</span><span class='n'>ip_cmd</span><span class='p'>)</span>
+            <span class='n'>ip_result</span> <span class='o'>=</span> <span class='n'>ip_result_raw</span><span class='o'>[/</span><span class='n'>inet</span> <span class='n'>addr</span><span class='p'>:</span><span class='mi'>192</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>168</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>0</span><span class='p'>\</span><span class='o'>.</span><span class='n'>[</span><span class='mi'>1</span><span class='o'>-</span><span class='mi'>9</span><span class='o'>]*/]</span>
+            <span class='nb'>puts</span> <span class='s2'>&quot;</span><span class='si'>#{</span><span class='n'>ip_result</span><span class='o'>[/</span><span class='mi'>192</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>168</span><span class='p'>\</span><span class='o'>.</span><span class='mi'>0</span><span class='p'>\</span><span class='o'>.</span><span class='n'>[</span><span class='mi'>1</span><span class='o'>-</span><span class='mi'>9</span><span class='o'>]*/]</span><span class='si'>}</span><span class='s2'> </span><span class='si'>#{</span><span class='n'>host_result</span><span class='si'>}</span><span class='s2'>&quot;</span>
+        <span class='k'>end</span>
+      <span class='k'>rescue</span>
+        <span class='k'>return</span>
+      <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='p'>(</span><span class='mi'>1</span><span class='o'>.</span><span class='n'>.</span><span class='mi'>254</span><span class='p'>)</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>ip</span><span class='o'>|</span>
+    <span class='n'>host</span> <span class='o'>=</span> <span class='s2'>&quot;192.168.0.</span><span class='si'>#{</span><span class='n'>ip</span><span class='si'>}</span><span class='s2'>&quot;</span>
+    <span class='no'>Thread</span><span class='o'>.</span><span class='n'>new</span> <span class='k'>do</span>
+      <span class='no'>Thread</span><span class='o'>.</span><span class='n'>current</span><span class='o'>[</span><span class='s2'>&quot;name&quot;</span><span class='o'>]=</span><span class='s2'>&quot;Working...&quot;</span>
+      <span class='k'>if</span>  <span class='no'>Ping</span><span class='o'>.</span><span class='n'>pingecho</span><span class='p'>(</span><span class='n'>host</span><span class='p'>)</span>
+        <span class='n'>alive</span><span class='o'>&lt;&lt;</span> <span class='n'>host</span>
+      <span class='k'>end</span>
+      <span class='no'>Thread</span><span class='o'>.</span><span class='n'>kill</span><span class='p'>(</span><span class='no'>Thread</span><span class='o'>.</span><span class='n'>current</span><span class='p'>)</span>
+    <span class='k'>end</span>
+<span class='k'>end</span>
+
+<span class='c1'>#wait for all the &quot;Working...&quot; threads to finish</span>
+<span class='n'>still_working</span><span class='o'>=</span><span class='kp'>true</span>
+<span class='k'>while</span> <span class='n'>still_working</span> <span class='k'>do</span>
+  <span class='n'>still_working</span><span class='o'>=</span><span class='kp'>false</span>
+  <span class='no'>Thread</span><span class='o'>.</span><span class='n'>list</span><span class='o'>.</span><span class='n'>each</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>x</span><span class='o'>|</span> <span class='k'>if</span> <span class='n'>x</span><span class='o'>[</span><span class='ss'>:name</span><span class='o'>]==</span><span class='s2'>&quot;Working...&quot;</span><span class='p'>;</span><span class='n'>still_working</span><span class='o'>=</span><span class='kp'>true</span><span class='p'>;</span><span class='k'>end</span><span class='p'>}</span> 
+<span class='k'>end</span>
+
+<span class='n'>alive</span><span class='o'>.</span><span class='n'>each</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>host</span><span class='o'>|</span>
+    <span class='n'>check</span><span class='p'>(</span><span class='n'>host</span><span class='p'>)</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>Thats better:</p>
+<div class='highlight'><pre><code class='bash'> <span class='nv'>$ </span><span class='nb'>time</span> ./monitor-threads.rb 
+ 192.168.0.17 hp-pavilion
+ 192.168.0.16 Dell
+ 192.168.0.111 geolap
+
+ real 0m12.584s
+ user 0m4.132s
+ sys  0m0.084s
+</code></pre>
+</div>
+<p>That&#8217;s about a 20 times speed up. Fast enough.</p>
+<hr />
+<h3 id='the_future_of_web_application_frameworks'>The future of web application frameworks</h3>
+
+<p>I&#8217;ve heard about the wonders of Ruby 1.9xs Fibers. Ruby <a href='http://ruby-doc.org/core-1.9/classes/Fiber.html'>Fibers</a> seem to be what used to be called co-routines. Would using Fibers speed this up? Since Fibers are co-routines, to find out, I&#8217;d have to rewrite the ping code so it did not block waiting for ping replies. The first half would send the pings and yield, the second half would receive the pings.</p>
+
+<p>I started out to see what could be done by putting together existing bits and pieces of code. I was able to speed up some code that was slow because it spent most of it&#8217;s time waiting. But to do it I had to create a thread for each operation that spends time waiting.</p>
+
+<p>This way of doing things&#8211;putting things together from existing bits and pieces&#8211;is the normal way of software development. Even Green Field applications use existing programing languages, frameworks and operating systems. Even the designers and programmers are stuck in existing patterns of thought.</p>
+
+<p>Making an existing slow sycronous piece of software into a fast asyncronous one requires rethinking basic habits and tools. Erlang,Scala,EventMachine,CSP,Occam,&#8230;, are all attempts to move programing practice past our <a href='http://www.eflorenzano.com/blog/post/how-do-we-kick-our-synchronous-addiction/'>sychronous addiction</a></p>
+
+<p>It seems that I am not the only one who has a hard time thinking in asyncronous terms. Even the popular <a href='http://www.davidco.com/'>GTD</a> system of time management advises against multitasking. Arguing that humans are not effective multitaskers.</p>
+
+<p>If thin responsive web apps are to displace <a href='http://www.mikeperham.com/2010/04/03/introducing-phat-an-asynchronous-rails-app/'>fat</a> desktop ones, some serious web development mindset and framework rehab may be required.</p>
+
+<p>The trouble with being addicted to something is in seeing how to live with out it.</p>
+
+<p>Hello, my name is George, and I&#8217;am a Sycroholic.</p>
+
+<p><img src='/images/sycroholic.png' alt='sycroholic' /></p>

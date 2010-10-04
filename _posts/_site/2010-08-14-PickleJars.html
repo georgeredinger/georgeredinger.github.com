@@ -1,0 +1,119 @@
+<h2 id='pickle_jar'>Pickle Jar</h2>
+
+<p>Given a list of names, pick one name at random.</p>
+
+<p>This problem was suggested by <a href='http://www.cowboyonrails.com/'>CowboyOnRails</a> for use at <a href='http://spokane.rubyusersgroup.org/pickle_jar'>Spokane Ruby Brigade</a>. For choosing who gets swag resulting from the Brigade&#8217;s O&#8217;reilly user group sponsorship.</p>
+<hr />
+<h2 id='zeroth_try'>Zeroth Try:</h2>
+
+<p>&#8220;The Cowboy&#8217;s solution&#8221;</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>module</span> <span class='nn'>PickleJar</span>
+
+  <span class='vi'>@random</span> <span class='o'>=</span> <span class='o'>[]</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>add_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='vi'>@random</span> <span class='o'>&lt;&lt;</span> <span class='n'>namecase</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='vi'>@random</span><span class='o'>.</span><span class='n'>uniq!</span>
+    <span class='vi'>@random</span>
+  <span class='k'>end</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>add_names</span><span class='p'>(</span><span class='n'>names</span><span class='p'>)</span>
+    <span class='k'>if</span> <span class='n'>names</span><span class='o'>.</span><span class='n'>kind_of?</span> <span class='nb'>String</span>
+      <span class='n'>names</span> <span class='o'>=</span> <span class='n'>names</span><span class='o'>.</span><span class='n'>split</span><span class='p'>(</span><span class='s1'>&#39;,&#39;</span><span class='p'>)</span>
+    <span class='k'>elsif</span> <span class='o'>!</span><span class='n'>names</span><span class='o'>.</span><span class='n'>kind_of?</span> <span class='nb'>Array</span>
+      <span class='k'>raise</span> <span class='no'>RuntimeError</span><span class='p'>,</span> <span class='s2'>&quot;Please use comma delimited string or array with this method.&quot;</span>
+    <span class='k'>end</span>
+    <span class='vi'>@random</span> <span class='o'>+=</span> <span class='n'>names</span><span class='o'>.</span><span class='n'>collect</span><span class='p'>{</span> <span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='n'>namecase</span><span class='p'>(</span><span class='n'>n</span><span class='o'>.</span><span class='n'>strip</span><span class='p'>)</span> <span class='p'>}</span>
+    <span class='vi'>@random</span><span class='o'>.</span><span class='n'>uniq!</span>
+    <span class='vi'>@random</span>
+  <span class='k'>end</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>remove_name</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='vi'>@random</span><span class='o'>.</span><span class='n'>delete</span><span class='p'>(</span><span class='n'>namecase</span><span class='p'>(</span><span class='nb'>name</span><span class='o'>.</span><span class='n'>to_s</span><span class='p'>))</span>
+  <span class='k'>end</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>remove_names</span><span class='p'>(</span><span class='n'>names</span><span class='p'>)</span>
+    <span class='k'>if</span> <span class='n'>names</span><span class='o'>.</span><span class='n'>kind_of?</span> <span class='nb'>String</span>
+      <span class='n'>names</span> <span class='o'>=</span> <span class='n'>names</span><span class='o'>.</span><span class='n'>split</span><span class='p'>(</span><span class='s1'>&#39;,&#39;</span><span class='p'>)</span>
+    <span class='k'>elsif</span> <span class='o'>!</span><span class='n'>names</span><span class='o'>.</span><span class='n'>kind_of?</span> <span class='nb'>Array</span>
+      <span class='k'>raise</span> <span class='no'>RuntimeError</span><span class='p'>,</span> <span class='s2'>&quot;Please use comma delimited string or array with this method.&quot;</span>
+    <span class='k'>end</span>
+    <span class='vi'>@random</span> <span class='o'>-=</span> <span class='n'>names</span><span class='o'>.</span><span class='n'>collect</span> <span class='p'>{</span> <span class='o'>|</span><span class='n'>n</span><span class='o'>|</span> <span class='n'>namecase</span><span class='p'>(</span><span class='n'>n</span><span class='o'>.</span><span class='n'>strip</span><span class='p'>)</span> <span class='p'>}</span>
+    <span class='vi'>@random</span>
+  <span class='k'>end</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>winner_is</span>
+    <span class='k'>return</span> <span class='s2'>&quot;The Pickle Jar is empty...&quot;</span> <span class='k'>if</span> <span class='vi'>@random</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>&lt;</span> <span class='mi'>1</span>
+    <span class='n'>mix_it_up</span>
+    <span class='s2'>&quot;THE WINNER IS: (drum roll)...   </span><span class='si'>#{</span><span class='vi'>@random</span><span class='o'>.</span><span class='n'>delete_at</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>)</span><span class='si'>}</span><span class='s2'>&quot;</span>
+  <span class='k'>end</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>mix_it_up</span>  <span class='c1'># Just for fun...  already random but makes people feel better.</span>
+    <span class='vi'>@random</span> <span class='o'>=</span> <span class='vi'>@random</span><span class='o'>.</span><span class='n'>sort_by</span><span class='p'>{</span><span class='nb'>rand</span><span class='p'>}</span><span class='o'>[</span><span class='mi'>0</span><span class='o'>.</span><span class='n'>.</span><span class='vi'>@random</span><span class='o'>.</span><span class='n'>length</span><span class='o'>]</span>
+  <span class='k'>end</span>
+
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>peek_in_jar</span>
+    <span class='vi'>@random</span>
+  <span class='k'>end</span>
+  
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>namecase</span><span class='p'>(</span><span class='nb'>name</span><span class='p'>)</span>
+    <span class='nb'>name</span> <span class='o'>=</span> <span class='nb'>name</span><span class='o'>.</span><span class='n'>to_s</span>
+    <span class='nb'>name</span><span class='o'>.</span><span class='n'>strip!</span>
+    <span class='nb'>name</span><span class='o'>.</span><span class='n'>downcase!</span>
+    <span class='nb'>name</span><span class='o'>.</span><span class='n'>gsub</span><span class='p'>(</span><span class='sr'>/\b\w/</span><span class='p'>){</span><span class='vg'>$&amp;</span><span class='o'>.</span><span class='n'>upcase</span><span class='p'>}</span>
+  <span class='k'>end</span>
+
+  <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>empty</span>
+    <span class='vi'>@random</span> <span class='o'>=</span> <span class='o'>[]</span>
+  <span class='k'>end</span>
+
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>This solution also has tests and a user manual. The rest of Cowboy&#8217;s solution is can be found <a href='http://github.com/cowboyonrails/PickleJar'>here</a></p>
+<hr />
+<h2 id='my_first_try'>My First Try:</h2>
+
+<p>A &#8220;One Liner&#8221;</p>
+
+<p>This solution more closely matches the conventional meaning of &#8220;Cowboy code&#8221;.</p>
+<div class='highlight'><pre><code class='ruby'>  <span class='n'>ruby</span> <span class='o'>-</span><span class='n'>e</span> <span class='s1'>&#39;a=%W(bob joe chr jan frk crl cbw dog jr );\</span>
+<span class='s1'>    puts &quot;The Winner is: #{a[rand(a.size)]}&quot;&#39;</span>
+</code></pre>
+</div><hr />
+<h2 id='my_second_try'>My Second Try:</h2>
+
+<p>&#8220;Object Oriented&#8221;</p>
+
+<p>This one uses some of the techniques used in other automated voting systems.</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='n'>pickle_jar</span>
+  <span class='kp'>initialize</span><span class='p'>(</span><span class='n'>list</span><span class='p'>)</span>
+   <span class='nb'>puts</span> <span class='n'>list</span><span class='o'>.</span><span class='n'>pick_a_random_name</span>
+  <span class='k'>end</span>
+  <span class='k'>def</span> <span class='nf'>pick_a_random_name</span>
+    <span class='s2'>&quot;George&quot;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre>
+</div><hr />
+<h2 id='my_third_try'>My Third Try:</h2>
+
+<p>From the previous century: CGI</p>
+<script src='http://gist.github.com/525211.js'> </script>
+<h2 id='forth_try'>Forth Try:</h2>
+
+<p>Rack, like all the cool kids do things</p>
+<script src='http://gist.github.com/525241.js?file=pickle_jar_rack.rb' /><hr />
+<h2 id='my_fifth_try'>My Fifth Try:</h2>
+
+<p>Javascript (jQuery), the new hotness</p>
+<script src='http://gist.github.com/525227.js'> </script><hr />
+<p>Some of these solutions are deployed on the web:</p>
+
+<ul>
+<li><a href='http://picklejar.georgeredinger.com/'>http://picklejar.georgeredinger.com/</a></li>
+
+<li><a href='http://thewinneris.georgeredinger.com/choose.rb'>http://thewinneris.georgeredinger.com/choose.rb</a></li>
+
+<li><a href='http://picklejar-rack.heroku.com/'>http://picklejar-rack.heroku.com/</a></li>
+</ul>

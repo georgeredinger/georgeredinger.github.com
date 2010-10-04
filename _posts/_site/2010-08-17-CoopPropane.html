@@ -1,0 +1,29 @@
+<h2 id='visualize_propane_price_history'>Visualize Propane price history</h2>
+
+<p>Consumer propane prices are highly variable. Like most consumers I prefer to buy when prices are low. But how to know when prices are at their lowest? This application looks at price history from my local propane supplier <a href='http://www.co-openergy.org/prices.html'>&#8220;co-op energy&#8221;</a> to help.</p>
+
+<p>I used</p>
+
+<ul>
+<li>Nokogiri</li>
+
+<li>Sinatra</li>
+
+<li>Datamapper</li>
+
+<li>Flot</li>
+
+<li>jQuery</li>
+
+<li>Haml/Sass</li>
+
+<li>And Heroku</li>
+</ul>
+
+<p>to build it.</p>
+
+<p>That&#8217;s a big pile of software to build a &#8220;simple&#8221; Sinatra app. I wanted to compare the &#8220;ease&#8221; of building small apps with Sinatra vs Rails. My conculsion: In this case Sinatra is easier on the computer. But, once you get Haml/Sass, Datamapper, Migrations, Views and models in their own directories, etc, It&#8217;s not much easier for me. An instance of the app is deployed here:</p>
+
+<p><a href='http://cooppropane.heroku.com/'>http://cooppropane.heroku.com/</a></p>
+
+<p>The source is on <a href='http://github.com/georgeredinger/cooppropane'>GitHub</a></p>
