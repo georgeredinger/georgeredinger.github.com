@@ -2,35 +2,35 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">   
   <url>
     <loc>http://georgeredinger.github.com</loc>
-    <lastmod>2010-10-04T11:30:19-07:00</lastmod>
+    <lastmod>2010-10-04T11:41:45-07:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
     
       <url>
             <loc>http://georgeredinger.github.com/2010/08/31/WhoIsOnMyNetwork/</loc>
-            <lastmod>2010-10-04T11:30:19-07:00</lastmod>
+            <lastmod>2010-10-04T11:41:45-07:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.2</priority>
       </url>
     
       <url>
             <loc>http://georgeredinger.github.com/2010/08/17/Logprices/</loc>
-            <lastmod>2010-10-04T11:30:19-07:00</lastmod>
+            <lastmod>2010-10-04T11:41:45-07:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.2</priority>
       </url>
     
       <url>
             <loc>http://georgeredinger.github.com/2010/08/17/CoopPropane/</loc>
-            <lastmod>2010-10-04T11:30:19-07:00</lastmod>
+            <lastmod>2010-10-04T11:41:45-07:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.2</priority>
       </url>
     
       <url>
             <loc>http://georgeredinger.github.com/2010/08/14/PickleJars/</loc>
-            <lastmod>2010-10-04T11:30:19-07:00</lastmod>
+            <lastmod>2010-10-04T11:41:45-07:00</lastmod>
             <changefreq>monthly</changefreq>
             <priority>0.2</priority>
       </url>
