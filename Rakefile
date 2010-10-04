@@ -32,8 +32,8 @@ task :server do
     jekyll('--server --auto')
 end
 
-desc 'Build and deploy'
-task :deploy => :build do
+desc 'deploy assumed already build'
+task :deploy  do
     #sh 'rsync -rtzh --progress --delete _site/ tatey@tatey.com:~/var/www/tatey.com/'
     sh 'git push origin'
 end
