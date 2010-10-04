@@ -1,5 +1,6 @@
 permalink: pretty
 pygments: true
+url: georgeredinger.github.com
 markdown: rdiscount
 rdiscount:
   extensions: [smart]
