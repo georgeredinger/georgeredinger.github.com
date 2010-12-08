@@ -1,16 +1,13 @@
-<script src="http://www.google.com/jsapi?key=ABQIAAAAP_8YDI9gsJp2Kb1LN84m6RRhG9pSH20TEz9wwPtMOR-PPl8h0RSc49wL0W0HC4Uxmli1wOFXeVivkQ" type="text/javascript"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAP_8YDI9gsJp2Kb1LN84m6RRhG9pSH20TEz9wwPtMOR-PPl8h0RSc49wL0W0HC4Uxmli1wOFXeVivkQ"></script>
 
 <script language="Javascript" type="text/javascript">
-google.load("search", "1");
+  google.load("search", "1");
 function OnLoad() {
-  console.log "search loaded";
   var searchControl = new google.search.SearchControl();
   var webSearch = new google.search.WebSearch();
-  webSearch.setSiteRestriction('georgeredinger.github.com');
+  webSearch.setSiteRestriction('github.com/georgeredinger');
   searchControl.addSearcher(webSearch);
   searchControl.draw(document.getElementById("search"));
-  console.log webSearch;
-  console.log "search finished";
 }
 google.setOnLoadCallback(OnLoad);
 </script>

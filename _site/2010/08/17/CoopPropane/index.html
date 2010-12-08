@@ -11,32 +11,18 @@
   </head>
   <body>
 
-  <script src="http://www.google.com/jsapi?key=ABQIAAAAP_8YDI9gsJp2Kb1LN84m6RRhG9pSH20TEz9wwPtMOR-PPl8h0RSc49wL0W0HC4Uxmli1wOFXeVivkQ" type="text/javascript"></script>
+  <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAP_8YDI9gsJp2Kb1LN84m6RRhG9pSH20TEz9wwPtMOR-PPl8h0RSc49wL0W0HC4Uxmli1wOFXeVivkQ"></script>
 
 <script language="Javascript" type="text/javascript">
-//<![CDATA[
-
-google.load("search", "1");
-
+  google.load("search", "1");
 function OnLoad() {
-  // Create a search control
   var searchControl = new google.search.SearchControl();
-
-  // Add in a WebSearch
   var webSearch = new google.search.WebSearch();
-
-  // Restrict our search to pages from this site
-  webSearch.setSiteRestriction('georgeredinger.github.com');
-
-  // Add the searcher to the SearchControl
+  webSearch.setSiteRestriction('github.com/georgeredinger');
   searchControl.addSearcher(webSearch);
-
-  // tell the searcher to draw itself and tell it where to attach
   searchControl.draw(document.getElementById("search"));
 }
 google.setOnLoadCallback(OnLoad);
-
-//]]>
 </script>
  
   <div ID="header">
