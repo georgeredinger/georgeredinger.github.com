@@ -31,7 +31,7 @@ About half of the ids in the sequence between 2 and 20000 don't contain any ride
 At the September meeting of the [Spokane RUG](http://spokane.rubyusersgroup.org/), [Chris Reister](http://twitter.com/#!/chrisreister) gave a presentation on [EventMachine](http://www.rubyeventmachine.com/).
 
 
-Inspired by Chris' presentation, I did some experiments to see how much faster concurrent http gets would for getting show results pages from usdf.org.
+Inspired by Chris' presentation, I did some experiments to see how much faster concurrent http gets would be for getting show results pages from usdf.org.
 
 Here's a chart showing the results of 10 trials getting 100 random pages with "FiberIterator" concurrency varying between 1 and 20:
 
