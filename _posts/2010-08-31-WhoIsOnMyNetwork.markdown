@@ -198,11 +198,11 @@ some serious web development mindset and framework rehab may be required.
 
 The trouble with being addicted to something is in seeing how to live with out it.
 
-Hello, my name is George, and I'am a Sycroholic.
+Hello, my name is George, and I am a Syncroholic.
 
 
 
-![sycroholic](/images/sycroholic.png)
+![syncroholic](/images/syncroholic.png)
 
 
 
