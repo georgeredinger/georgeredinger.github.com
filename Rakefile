@@ -27,9 +27,9 @@ task :build do
     jekyll
 end
 
-desc 'Start server with --auto'
+desc 'Start server with --watch'
 task :server do
-    jekyll('--server --auto')
+    jekyll('serve --watch')
 end
 
 desc 'deploy assumed already build'
